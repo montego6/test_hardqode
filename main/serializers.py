@@ -11,13 +11,17 @@ class LessonViewingSerializer(serializers.ModelSerializer):
 
 
 class LessonSerializer(serializers.ModelSerializer):
-    viewing = serializers.SerializerMethodField()
-
-    def get_viewing(self, obj):
-        user = self.context.get('user')
-        viewing = LessonViewing.objects.get(user=user, lesson=obj)
-        return LessonViewingSerializer(viewing).data
+    viewing = serializers.IntegerField()
+    status = serializers.CharField()
 
     class Meta:
         model = Lesson
-        fields = ['name', 'url', 'duration', 'viewing']
+        fields = ['name', 'url', 'duration', 'viewing', 'status']
+
+
+class ProductLessonSerializer(LessonSerializer):
+    date = serializers.DateField()
+
+    class Meta:
+        model = Lesson
+        fields = ['name', 'url', 'duration', 'viewing', 'status', 'date']

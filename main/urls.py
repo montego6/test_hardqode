@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import AllLessonsAPIView
+from .views import AllLessonsAPIView, LessonsOfConcreteProductAPIView
 
 urlpatterns = [
-    path('lessons/', AllLessonsAPIView.as_view(), name='all-lessons')
+    path('lessons/', AllLessonsAPIView.as_view(), name='all-lessons'),
+    path('product_lessons/<int:id>', LessonsOfConcreteProductAPIView.as_view(), name='product-lessons')
 ]

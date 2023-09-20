@@ -30,4 +30,5 @@ class LessonViewing(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='viewings')
     duration = models.PositiveIntegerField()
     status = models.CharField(max_length=2, choices=ViewingStatus.choices, default=ViewingStatus.NOTVIEWED)
+    date = models.DateField(auto_now_add=True)
 
