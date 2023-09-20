@@ -1,3 +1,6 @@
 from django.urls import path
+from .views import AllLessonsAPIView
 
-urlpatterns = []
+urlpatterns = [
+    path('lessons/', AllLessonsAPIView.as_view(), name='all-lessons')
+]
