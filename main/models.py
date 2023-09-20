@@ -15,7 +15,7 @@ class ProductAccess(models.Model):
 
 
 class Lesson(models.Model):
-    products = models.ManyToManyField(Product)
+    products = models.ManyToManyField(Product, related_name='lessons')
     name = models.CharField(max_length=360)
     url = models.URLField()
     duration = models.PositiveIntegerField()
@@ -32,3 +32,5 @@ class LessonViewing(models.Model):
     status = models.CharField(max_length=2, choices=ViewingStatus.choices, default=ViewingStatus.NOTVIEWED)
     date = models.DateField(auto_now_add=True)
 
+    class Meta:
+        unique_together = ('lesson', 'user')
