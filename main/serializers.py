@@ -2,15 +2,13 @@ from rest_framework import serializers
 from .models import Lesson, Product
 
 
-    
-
 class LessonSerializer(serializers.ModelSerializer):
     viewing = serializers.IntegerField()
     status = serializers.CharField()
 
     class Meta:
         model = Lesson
-        fields = ['name', 'url', 'duration', 'viewing', 'status']
+        fields = ["name", "url", "duration", "viewing", "status"]
 
 
 class LessonWithDateSerializer(LessonSerializer):
@@ -18,10 +16,10 @@ class LessonWithDateSerializer(LessonSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['name', 'url', 'duration', 'viewing', 'status', 'date']
+        fields = ["name", "url", "duration", "viewing", "status", "date"]
 
 
-class ProductStatisticsSerializer(serializers.ModelSerializer):
+class ProductsStatisticsSerializer(serializers.ModelSerializer):
     lesson_views = serializers.IntegerField()
     viewing_duration = serializers.IntegerField()
     students_studying = serializers.IntegerField()
@@ -29,5 +27,10 @@ class ProductStatisticsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'lesson_views', 'viewing_duration', 'students_studying', 'selling_percentage']
-
+        fields = [
+            "id",
+            "lesson_views",
+            "viewing_duration",
+            "students_studying",
+            "selling_percentage",
+        ]
