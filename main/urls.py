@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import AllLessonsAPIView, LessonsOfConcreteProductAPIView, ProductStatisticsAPIView
+from .views import UserLessonsAPIView, LessonsOfConcreteProductAPIView, ProductStatisticsAPIView
 
 urlpatterns = [
-    path('lessons/', AllLessonsAPIView.as_view(), name='all-lessons'),
-    path('product_lessons/<int:id>', LessonsOfConcreteProductAPIView.as_view(), name='product-lessons'),
+    path('lessons/', UserLessonsAPIView.as_view(), name='all-lessons'),
+    path('products/<int:id>/lessons/', LessonsOfConcreteProductAPIView.as_view(), name='product-lessons'),
     path('products/statistics/', ProductStatisticsAPIView.as_view(), name='products-statistics')
 ]

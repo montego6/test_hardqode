@@ -13,6 +13,9 @@ class ProductAccess(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='accesses')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='accesses')
 
+    class Meta:
+        unique_together = ('product', 'user')
+
 
 class Lesson(models.Model):
     products = models.ManyToManyField(Product, related_name='lessons')
@@ -30,7 +33,7 @@ class LessonViewing(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='viewings')
     duration = models.PositiveIntegerField()
     status = models.CharField(max_length=2, choices=ViewingStatus.choices, default=ViewingStatus.NOTVIEWED)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now=True)
 
     class Meta:
         unique_together = ('lesson', 'user')

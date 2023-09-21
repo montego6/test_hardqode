@@ -1,6 +1,6 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from main.models import LessonViewing, Lesson
+from main.models import LessonViewing
 
 @receiver(pre_save, sender=LessonViewing)
 def set_viewing_status(sender, instance, **kwargs):
